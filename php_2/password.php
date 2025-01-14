@@ -55,6 +55,21 @@ function controlloSpeciale($string)
     }
     return $check;
 }
+function controlloSpazi($string)
+{
+    $check = false;
+    for ($i = 0; $i < strlen($string); $i++) {
+        if (strpos($string, ' ') === false) {
+            $check = true;
+        }
+    }
+    if (!$check) {
+        echo "La password non può contenere uno spazio! \n";
+    }
+    
+    return $check;
+}
+
 
 function controlloPassword($string)
 {
@@ -63,8 +78,9 @@ function controlloPassword($string)
     $checkMiausc = controlloMaiuscola($string);
     $checkMinusc = controlloMinuscola($string);
     $checkSpe = controlloSpeciale($string);
+    $checkSpazio = controlloSpazi($string);
 
-    if ($checkLung && $checkMiausc && $checkMinusc && $checkSpe) {
+    if ($checkLung && $checkMiausc && $checkMinusc && $checkSpe && $checkSpazio) {
         echo "La password ''" . $string . "'' è stata accettata";
         // $check = true;
         return true;
